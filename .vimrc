@@ -47,9 +47,6 @@
     " NerdTree
     Plug 'preservim/nerdtree'
 
-    " enable smooth scroll
-    Plug 'terryma/vim-smooth-scroll'
-
     " <Tab> everything!
     Plug 'ervandew/supertab'
 
@@ -341,8 +338,8 @@
         nnoremap <C-]> g<C-]>
 
         " Fast viewpoint scroll
-        nnoremap <c-e> :call smooth_scroll#down(3, 10, 1)<CR>
-        nnoremap <c-y> :call smooth_scroll#up(3, 10, 1)<CR>
+        nnoremap <c-e> 3<c-e>
+        nnoremap <c-y> 3<c-y>
 
 	" Move through splited windows
 	nnoremap <Leader>f <c-w>w
