@@ -2,6 +2,7 @@
 vimrc and tmuxconf
 
 ## VIMRC
+### [IMPORTANT] install vim plug first
 from : https://github.com/timss/vimconf
 thx to timss!
 
