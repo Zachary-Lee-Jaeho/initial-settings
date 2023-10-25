@@ -50,18 +50,9 @@
     " NerdTree
     Plug 'preservim/nerdtree'
 
-    " <Tab> everything!
-    Plug 'ervandew/supertab'
-
-    " Fuzzy finder (files, mru, etc)
-    Plug 'ctrlpvim/ctrlp.vim'
-
     " A pretty statusline, bufferline integration
     Plug 'itchyny/lightline.vim'
     Plug 'bling/vim-bufferline'
-
-    " Undo history visualizer
-    Plug 'mbbill/undotree'
 
     " Glorious colorscheme
     " To avoid errors during automatic installation
@@ -74,33 +65,14 @@
     " Autoclose (, " etc
     Plug 'somini/vim-autoclose'
 
-    " UNIX shell command helpers, e.g. sudo, chmod, remove etc.
-    Plug 'tpope/vim-eunuch'
-
     " Git wrapper inside Vim
     Plug 'tpope/vim-fugitive'
 
     " Handle surround chars like ''
     Plug 'tpope/vim-surround'
 
-    " Align your = etc.
-    Plug 'junegunn/vim-easy-align'
-
-    " Snippets like textmate
-    if has('python') || has('python3')
-        Plug 'honza/vim-snippets'
-        Plug 'sirver/ultisnips'
-    endif
-
     " A fancy start screen, shows MRU etc.
     Plug 'mhinz/vim-startify'
-
-    " Vim signs (:h signs) for modified lines based off VCS (e.g. Git)
-    Plug 'mhinz/vim-signify'
-
-    " Awesome syntax checker.
-    " REQUIREMENTS: See :h syntastic-intro
-    Plug 'vim-syntastic/syntastic'
 
     " Functions, class data etc.
     " depends on either exuberant-ctags or universal-ctags
@@ -145,8 +117,6 @@
                 autocmd!
                 autocmd BufNewFile,BufRead *.md set ft=markdown tw=79
                 autocmd BufNewFile,BufRead *.tex set ft=tex 
-                "tw=79
-                autocmd BufNewFile,BufRead *.txt set ft=sh tw=79 
             augroup END
         """ }}}
         """ 256 colors for maximum jellybeans bling. See commit log for info {{{
@@ -272,7 +242,7 @@
     set smartcase                                   " sensitive with uppercase
     set smarttab                                    " tab to 0,4,8 etc.
     set softtabstop=-1                              " =-1 uses 'sw' value
-    set tabstop=4                                   " <Tab> as 4 spaces indent
+    set tabstop=2                                   " <Tab> as 4 spaces indent
     """ Only auto-comment newline for block comments {{{
         augroup AutoBlockComment
             autocmd! FileType c,cpp setlocal comments -=:// comments +=f://
@@ -290,12 +260,6 @@
         " Remap <Leader>
         let g:mapleader=','
 
-        " vim-smooth-scroll
-        " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 5)<CR>
-        " noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10,5)<CR>
-        " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 3)<CR>
-        " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 3)<CR>
-        "
         " Quickly edit/source .vimrc
         noremap <Leader>ve :edit $HOME/.vimrc<CR>
         noremap <Leader>vs :source $HOME/.vimrc<CR>
@@ -320,16 +284,6 @@
         " Quickly switch buffers
         nnoremap <Leader>e :bnext<CR>
         nnoremap <Leader>q :bprevious<CR>
-        nnoremap <Leader>1 :1b<CR>
-        nnoremap <Leader>2 :2b<CR>
-        nnoremap <Leader>3 :3b<CR>
-        nnoremap <Leader>4 :4b<CR>
-        nnoremap <Leader>5 :5b<CR>
-        nnoremap <Leader>6 :6b<CR>
-        nnoremap <Leader>7 :7b<CR>
-        nnoremap <Leader>8 :8b<CR>
-        nnoremap <Leader>9 :9b<CR>
-        nnoremap <Leader>0 :10b<CR>
 
         " Highlight last inserted text
         nnoremap gV '[V']
@@ -343,10 +297,6 @@
         " Fast viewpoint scroll
         nnoremap <c-e> 3<c-e>
         nnoremap <c-y> 3<c-y>
-
-	" Move through splited windows
-	nnoremap <Leader>f <c-w>w
-
     """ }}}
     """ Functions and/or fancy keybinds {{{
         """ Toggle syntax highlighting {{{
@@ -440,14 +390,6 @@
 
         " Toggle undo history tree
         nnoremap <F5> :UndotreeToggle<CR>
-
-        " Syntastic - toggle error list. Probably should be toggleable.
-        noremap <silent><Leader>lo :Errors<CR>
-        noremap <silent><Leader>lc :lclose<CR>
-
-        " EasyAlign - interactive mode (e.g. vipga/gaip)
-        xmap ga <Plug>(EasyAlign)
-        nmap ga <Plug>(EasyAlign)
     """ }}}
 """ }}}
 """ Plugin settings {{{
@@ -463,19 +405,8 @@
             \ ]
         let g:startify_files_number = 5
     """ }}}
-    """ CtrlP {{{
-        " Don't recalculate files on start (slow)
-        let g:ctrlp_clear_cache_on_exit = 0
-        let g:ctrlp_working_path_mode = 'ra'
-
-        " Don't split in Startify
-        let g:ctrlp_reuse_window = 'startify'
-    """ }}}
     """ TagBar {{{
-        " set tags=/home/zachary/pintos/tags
-        " set tags=/home/zachary/projects/Windows-driver-samples/tags
-        " set tags=/home/zachary/projects/dramsim3/src/tags
-        set tags=/home/zachary/projects/ransomware-recovery-module/kernel/tags
+        set tags="{{{SET SOME TAGS FILE}}}"
 
         " Proportions
         let g:tagbar_left = 0
@@ -484,35 +415,10 @@
         " Used in lightline.vim
         let g:tagbar_status_func = 'TagbarStatusFunc'
     """ }}}
-    """ Syntastic {{{
-        " Automatic checking for active, only when :SyntasticCheck for passive
-        " NOTE: override these in $HOME/.vimrc.first as needed!
-        " https://github.com/timss/vimconf/issues/9
-        let g:syntastic_mode_map = get(g:, 'syntastic_mode_map', {
-            \ 'mode': 'passive',
-            \ 'active_filetypes':
-                \ ['c', 'cpp', 'perl', 'python'] })
-
-        " Skip check on :wq, :x, :ZZ etc
-        let g:syntastic_check_on_wq = 0
-    """ }}}
     """ Netrw {{{
         let g:netrw_banner = 0
         let g:netrw_list_hide = '^\.$'
         let g:netrw_liststyle = 3
-    """ }}}
-    """ Supertab {{{
-        " Complete based on context (compl-omni, compl-filename, ..)
-        let g:SuperTabDefaultCompletionType = 'context'
-
-        " Longest common match, e.g. 'b<Tab>' => 'bar' for 'barbar', 'barfoo'
-        let g:SuperTabLongestEnhanced = 1
-        let g:SuperTabLongestHighlight = 1
-    """ }}}
-    """ UltiSnips {{{
-        let g:UltiSnipsExpandTrigger='<Tab>'
-        let g:UltiSnipsJumpForwardTrigger='<Tab>'
-        let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
     """ }}}
     """ Automatically remove preview window after autocomplete {{{
     """ (mainly for clang_complete)
@@ -534,7 +440,7 @@
             \     'right': [
             \         ['lineinfo'],
             \         ['percent'],
-            \         ['fileformat', 'fileencoding', 'filetype', 'syntastic']
+            \         ['fileformat', 'fileencoding', 'filetype']
             \     ]
             \ },
             \ 'component': {
@@ -549,12 +455,6 @@
             \     'fileformat'   : 'LightlineFileformat',
             \     'fileencoding' : 'LightlineFileencoding',
             \     'filetype'     : 'LightlineFiletype'
-            \ },
-            \ 'component_expand': {
-            \     'syntastic': 'SyntasticStatuslineFlag',
-            \ },
-            \ 'component_type': {
-            \     'syntastic': 'middle',
             \ },
             \ 'subseparator': {
             \     'left': '|', 'right': '|'
@@ -578,7 +478,6 @@
         function! LightlineMode()
             let l:fname = expand('%:t')
             return l:fname ==# '__Tagbar__' ? 'Tagbar' :
-                \ l:fname ==# 'ControlP' ? 'CtrlP' :
                 \ winwidth(0) > 60 ? lightline#mode() : ''
         endfunction
 
@@ -660,18 +559,6 @@
             let g:lightline.fname = a:fname
             return lightline#statusline(0)
         endfunction
-
-        function! s:syntastic()
-            SyntasticCheck
-            call lightline#update()
-        endfunction
-
-        augroup AutoSyntastic
-            autocmd!
-            execute 'autocmd FileType ' .
-                \join(g:syntastic_mode_map['active_filetypes'], ',') .
-                \' autocmd BufWritePost <buffer> :call s:syntastic()'
-        augroup END
     """ }}}
 """ }}}
 """ Local ending config, will overwrite anything above. Generally use this. {{{
