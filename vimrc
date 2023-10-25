@@ -1,6 +1,3 @@
-"-----------------------------------------"
-" Source: http://github.com/timss/vimconf "
-"-----------------------------------------"
 
 """ Automatically create needed files and folders on first run (*nix only) {{{
     call system('mkdir -p $HOME/.vim/autoload')
