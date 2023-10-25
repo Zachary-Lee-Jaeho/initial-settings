@@ -1,11 +1,11 @@
 # initial-settings
 vimrc and tmuxconf
 
-## VIMRC
+# How to install 
 
-from : https://github.com/timss/vimconf
-thx to timss!
+run following command 
 
-## TMUX CONF
-install tpm and https://github.com/tmux-plugins/tmux-continuum
+``` bash
+sh ./link_setting.sh
+``` 
 
