@@ -1,0 +1,1 @@
+/media/ssd/jaeho/.vimrc

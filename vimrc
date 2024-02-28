@@ -1,6 +1,7 @@
 
 """ Automatically create needed files and folders on first run (*nix only) {{{
 call system('mkdir -p $HOME/.vim/autoload')
+call system('mkdir -p $HOME/.vim/backups')
 call system('mkdir -p $HOME/.vim/bundle')
 call system('mkdir -p $HOME/.vim/swap')
 call system('mkdir -p $HOME/.vim/undo')
@@ -210,7 +211,10 @@ augroup END
 set autoread                                    " refresh if changed
 set confirm                                     " confirm changed files
 set noautowrite                                 " never autowrite
-set nobackup                                    " disable backups
+" set nobackup                                    " disable backups
+set backup               " 백업 파일 생성 활성화
+set backupdir=~/.vim/backups  " 백업 파일을 저장할 디렉토리 설정
+set backupcopy=yes       " 백업 시 원본 파일을 복사하는 방식으로 백업   "
 """ Persistent undo. Requires Vim 7.3 {{{
 if has('persistent_undo') && exists('&undodir')
   set undodir=$HOME/.vim/undo/            " where to store undofiles
@@ -417,12 +421,13 @@ let g:formatterpath = ['/usr/lib/llvm-10/bin']
 function! MyAutoformat()
   let file_extension = expand('%:e')
 
-  if file_extension != 'py' && file_extension != 'inc'
+  if file_extension != '' && file_extension != 'py' && file_extension != 'inc'
     Autoformat
   endif
 endfunction
 
 au BufWrite * call MyAutoformat()
+
 """ }}}
 """ supertab {{{
 " Complete based on context (compl-omni, compl-filename, ..)
