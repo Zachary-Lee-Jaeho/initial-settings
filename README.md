@@ -1,11 +1,12 @@
-# initial-settings
-vimrc and tmuxconf
+# initial-settings for NEOVIM and TMUX
+(Nice!)
 
 # How to install 
 
-run following command 
+Run the following command to install the settings
 
 ``` bash
-sh ./link_setting.sh
-``` 
-
+git clone https://github.com/Zachary-Lee-Jaeho/initial-settings.git ~/.local/initial-settings
+mv ~/.local/initial-settings
+zsh ./setup.sh
+```
