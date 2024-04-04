@@ -6,7 +6,6 @@
 local M = {}
 
 M.ui = {
-  -- CUSTOMIZATION -------------
   theme = "jellybeans",
   changed_themes = {
     jellybeans = {
@@ -20,12 +19,6 @@ M.ui = {
   nvdash = {
     load_on_startup = true,
   },
-  -- CUSTOMIZATION -------------
-
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
 }
 
 M.plugins = "plugins"

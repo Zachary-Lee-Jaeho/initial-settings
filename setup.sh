@@ -30,6 +30,24 @@ fi
 
 
 
+# It tmux is not installed, notify and install it
+if ! [ -x "$(command -v tmux)" ]; then
+  echo "Tmux is not installed. Do you want to install it? (yes/no)"
+  while true; do
+    read answer
+    if [ "$answer" == "yes" ]; then
+      echo "Installing tmux..."
+      sudo apt-get install tmux
+      break
+    elif [ "$answer" == "no" ]; then
+      echo "Please run this script again after installing tmux."
+      exit 1
+    else
+      echo "Please answer yes or no."
+    fi
+  done
+fi
+
 # Install tmux tpm
 echo "Installing tmux tpm..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -40,6 +58,7 @@ ln -s ~/.local/initial-settings/tmux/tmux.conf ~/.tmux.conf
 # Install neovim if it is not installed
 if ! [ -x "$(command -v nvim)" ]; then
   echo "Neovim is not installed. Do you want to install it? (yes/no)"
+    while true; do
   read answer
   if [ "$answer" == "yes" ]; then
     echo "Installing neovim (v0.9.5)..."
