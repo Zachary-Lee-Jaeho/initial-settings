@@ -12,9 +12,6 @@ conform.setup {
     timeout_ms = 1000,
     lsp_fallback = true,
   },
-  format_after_save = {
-    lsp_fallback = true,
-  },
 }
 
 conform.formatters.clang_format = {

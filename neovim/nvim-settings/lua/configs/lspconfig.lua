@@ -1,4 +1,5 @@
 local configs = require "nvchad.configs.lspconfig"
+local on_init = configs.on_init
 local on_attach = configs.on_attach
 local capabilities = configs.capabilities
 
@@ -14,12 +15,14 @@ local servers = {
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
+    on_init = on_init,
     on_attach = on_attach,
     capabilities = capabilities,
   }
 end
 
-lspconfig["clangd"].setup {
+lspconfig.clangd.setup {
+  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
   handlers = {
@@ -28,7 +31,8 @@ lspconfig["clangd"].setup {
   },
 }
 
-lspconfig["lua_ls"].setup {
+lspconfig.lua_ls.setup {
+  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -66,6 +70,9 @@ end
 -- tblgen-lsp-server
 
 lspconfig.mlir_lsp.setup {
+  on_init = on_init,
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     diagnostics = {
       enable = false,
@@ -74,6 +81,9 @@ lspconfig.mlir_lsp.setup {
 }
 
 lspconfig.tblgen_lsp.setup {
+  on_init = on_init,
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     diagnostics = {
       enable = false,

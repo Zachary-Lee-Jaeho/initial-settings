@@ -38,5 +38,5 @@ vim.schedule(function()
   require "mappings"
 end)
 
------ CUSTOM CONFIG -----
+-- My Custom Functions
 require "functions"

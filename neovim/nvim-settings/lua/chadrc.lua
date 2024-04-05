@@ -21,8 +21,4 @@ M.ui = {
   },
 }
 
-M.plugins = "plugins"
-
-require "functions"
-
 return M
