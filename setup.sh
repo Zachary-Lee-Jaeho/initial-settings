@@ -64,7 +64,7 @@ if [[ -f ~/.tmux.conf ]]; then
     read answer
     if [[ "$answer" == "yes" ]]; then
       echo "Creating symbolic links..."
-      rm ~/.tmux.conf
+      /bin/rm ~/.tmux.conf
       /bin/ln -s ~/.local/initial-settings/tmux/tmux.conf ~/.tmux.conf
       break
     elif [[ "$answer" == "no" ]]; then
@@ -112,7 +112,7 @@ if [[ -d ~/.config/nvim ]]; then
     read answer
     if [[ "$answer" == "yes" ]]; then
       echo "Creating symbolic links for neovim..."
-      rm -rf ~/.config/nvim
+      /bin/rm -rf ~/.config/nvim
       /bin/ln -s ~/.local/initial-settings/neovim/nvim-settings ~/.config/nvim
       echo "All done!"
       break
