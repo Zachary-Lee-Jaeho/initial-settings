@@ -1,6 +1,18 @@
--- custom/configs/copilot.lua
+local copilot = require "copilot"
 
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_assume_mapped = true
+-- Disable the default keymap for <A-Tab>
+vim.api.nvim_set_keymap("i", "<A-Tab>", "<Nop>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("i", "<A-Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+copilot.setup {
+  suggestion = {
+    enabled = true,
+    auto_trigger = true,
+    dobounce = 50,
+    keymap = {
+      accept = "<A-Tab>",
+      next = "<A-]>",
+      prev = "<A-[>",
+      detail = "<A-?>",
+    },
+  },
+}

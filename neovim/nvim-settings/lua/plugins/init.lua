@@ -2,13 +2,15 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "nvchad.configs.lspconfig"
+      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
     lazy = false,
   },
   {
-    "github/copilot.vim",
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
       require "configs.copilot"
     end,
@@ -31,10 +33,25 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "lua-language-server",
-        "clang-format",
+        -- Bash
+        "bash-language-server",
+        "beautysh",
+        "shellcheck",
+
+        -- C/C++
         "clangd",
+        "clang-format",
+
+        --Lua
+        "lua-language-server",
         "stylua",
+
+        -- Python
+        "debugpy",
+        "mypy",
+        "ruff-lsp",
+        "pyright",
+        "python-lsp-server",
       },
     },
   },
@@ -51,7 +68,6 @@ return {
         "css",
         "javascript",
         "json",
-        -- "vue", "svelte",
 
         -- Coding
         "c",
@@ -62,6 +78,9 @@ return {
 
         "gitignore",
         "llvm",
+      },
+      indent = {
+        enable = true,
       },
     },
   },

@@ -11,13 +11,18 @@ M.ui = {
     jellybeans = {
       base_30 = {
         grey = "#424242",
-        grey_fg = "#515151",
+        grey_fg = "#606060",
       },
     },
   },
 
   nvdash = {
     load_on_startup = true,
+  },
+
+  hl_override = {
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
   },
 }
 
