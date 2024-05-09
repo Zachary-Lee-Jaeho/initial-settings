@@ -111,7 +111,7 @@ if [[ -d ~/.config/nvim ]]; then
   while true; do
     read answer
     if [[ "$answer" == "yes" ]]; then
-      echo "Installing nodejs and npm
+      echo "Installing nodejs and npm..."
       sudo apt install -y nodejs npm
       echo "Creating symbolic links for neovim..."
       /bin/rm -rf ~/.config/nvim
