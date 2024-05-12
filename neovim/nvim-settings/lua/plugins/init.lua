@@ -8,15 +8,6 @@ return {
     lazy = false,
   },
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require "configs.copilot"
-    end,
-    lazy = false,
-  },
-  {
     "p00f/clangd_extensions.nvim",
     config = function()
       require "configs.clangd_extensions"
@@ -54,6 +45,15 @@ return {
         "python-lsp-server",
       },
     },
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require "configs.copilot"
+    end,
+    lazy = false,
   },
   {
     "nvim-treesitter/nvim-treesitter",
