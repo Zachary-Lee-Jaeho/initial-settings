@@ -25,6 +25,7 @@ fi
 
 # If zsh is not the default shell, notify and change it when user types yes
 if [[ "$SHELL" != "$(which zsh)" ]]; then
+  echo "\n"
   echo "Your default shell is not zsh. Do you want to change it? (yes/no)"
   while true; do
     read answer
@@ -42,6 +43,7 @@ fi
 
 # Install oh-my-zsh if it is not installed
 if [[ ! -d ~/.oh-my-zsh ]]; then
+  echo "\n"
   echo "Now you need to install oh-my-zsh."
   echo "After installing oh-my-zsh, please run this script again. (press enter to continue)"
   read answer
@@ -51,6 +53,7 @@ fi
 
 # If tmux is not installed, notify and install it
 if ! [[ -x "$(command -v tmux)" ]]; then
+  echo "\n"
   echo "Tmux is not installed. Do you want to install it? (yes/no)"
   while true; do
     read answer
@@ -75,6 +78,7 @@ fi
 
 # If there is a .tmux.conf file, ask to remove it and create symbolic link
 if [[ -f ~/.tmux.conf ]]; then
+  echo "\n"
   echo "There is a ~/.tmux.conf file. Do you want to remove it and apply my setting? (yes/no)"
   while true; do
     read answer
@@ -94,6 +98,7 @@ fi
 
 # Install neovim if it is not installed
 if ! [[ -x "$(command -v nvim)" ]]; then
+  echo "\n"
   echo "Neovim is not installed. Do you want to install it? (yes/no)"
   while true; do
     read answer
@@ -118,6 +123,7 @@ fi
 
 # If there is a ~/.config/nvim directory, ask to remove it and create symbolic link
 if [[ -d ~/.config/nvim ]]; then
+  echo "\n"
   echo "There is a ~/.config/nvim directory. Do you want to remove it and create a symbolic link? (yes/no)"
   while true; do
     read answer
