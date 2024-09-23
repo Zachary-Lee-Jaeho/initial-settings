@@ -132,7 +132,7 @@ if [[ -d ~/.config/nvim ]]; then
       $SUDO apt install -y nodejs npm
       echo "Creating symbolic links for neovim..."
       /bin/rm -rf ~/.config/nvim
-      mkdir -p ~/.config
+      /bin/mkdir -p ~/.config
       /bin/ln -s ~/.local/initial-settings/neovim/nvim-settings ~/.config/nvim
       echo "All done!"
       break
