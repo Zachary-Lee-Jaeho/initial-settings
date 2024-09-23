@@ -145,6 +145,7 @@ if [[ -d ~/.config/nvim ]]; then
   done
 else
   echo "Creating symbolic links for neovim..."
+  /bin/mkdir -p ~/.config
   /bin/ln -s ~/.local/initial-settings/neovim/nvim-settings ~/.config/nvim
   echo "All done!"
 fi
