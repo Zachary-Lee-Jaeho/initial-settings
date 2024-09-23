@@ -5,7 +5,7 @@ local capabilities = configs.capabilities
 local lspconfig = require "lspconfig"
 local servers = {
   "pyright",
-  "tsserver",
+  "ts_ls",
   "rust_analyzer",
   "clangd",
   "cmake",
