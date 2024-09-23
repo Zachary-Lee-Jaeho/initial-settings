@@ -5,7 +5,7 @@ local capabilities = configs.capabilities
 local lspconfig = require "lspconfig"
 local servers = {
   "pyright",
-  "ts_ls",
+  "biome",
   "rust_analyzer",
   "clangd",
   "cmake",
