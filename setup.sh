@@ -13,7 +13,7 @@ SUDO=$(use_sudo)
 
 echo "Installing prerequisites..."
 $SUDO apt-get update
-$SUDO apt-get install curl
+$SUDO apt-get install curl wget
 
 
 # If zsh is not installed, notify and install it
