@@ -13,13 +13,19 @@ SUDO=$(use_sudo)
 
 echo "Installing prerequisites..."
 $SUDO apt-get update
-$SUDO apt-get install -y curl wget nodejs npm
-
+$SUDO apt-get install -y curl wget build-essential git python3-venv unzip
+curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
+if sudo -n true 2>/dev/null; then
+  sudo -E zsh nodesource_setup.sh
+else
+  zsh nodesource_setup.sh
+fi
+$SUDO apt-get install -y nodejs
 
 # If zsh is not installed, notify and install it
 if ! [[ -x "$(command -v zsh)" ]]; then
   echo 'Error: zsh is not installed.' >&2
-  echo ' Please run this script again after install zsh and oh-my-zsh.' >&2
+  echo ' Please run this script again after install zsh.' >&2
   exit 1
 fi
 
@@ -45,7 +51,10 @@ fi
 if [[ ! -d ~/.oh-my-zsh ]]; then
   echo "\n"
   echo "Now you need to install oh-my-zsh."
-  echo "After installing oh-my-zsh, please run this script again. (press enter to continue)"
+  echo "\n"
+  echo "                          [[ !! IMPORTANT !! ]]"
+  echo "After installing oh-my-zsh, please press Ctrl+D (press enter to continue)"
+  echo "\n"
   read answer
   echo "Installing oh-my-zsh..."
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -59,7 +68,7 @@ if ! [[ -x "$(command -v tmux)" ]]; then
     read answer
     if [[ "$answer" == "yes" ]]; then
       echo "Installing tmux..."
-      $SUDO apt-get install tmux
+      $SUDO apt-get install -y tmux
       break
     elif [[ "$answer" == "no" ]]; then
       echo "Please run this script again after installing tmux."
@@ -149,7 +158,9 @@ else
 fi
 
 echo "\n"
-echo "[IMPORTANT SETTING!!]"
+echo "                     [[ !! IMPORTANT SETTING !! ]]"
+echo "Please close the terminal and open it again to apply the changes\n"
+echo "Before close the terminal, please write down the following instructions\n"
 echo "Please run tmux and press:\n\t'F2+Shift+I'\nto install the settings\n"
 echo "Please run vim and run:\n\t:MasonInstallAll\nto install the rest of the plugins"
 echo "Read the https://github.com/NvChad/NvChad/tree/v2.5 to get more information about nvim settings"
