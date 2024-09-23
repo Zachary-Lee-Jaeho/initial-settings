@@ -1,4 +1,5 @@
-# initial-settings for NEOVIM and TMUX
+# Jaeho's Initial-Settings (JIS)
+for NEOVIM and TMUX
 
 > First, install zsh!
 
