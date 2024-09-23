@@ -11,6 +11,11 @@ use_sudo() {
 
 SUDO=$(use_sudo)
 
+echo "Installing prerequisites..."
+$SUDO apt-get update
+$SUDO apt-get install curl
+
+
 # If zsh is not installed, notify and install it
 if ! [[ -x "$(command -v zsh)" ]]; then
   echo 'Error: zsh is not installed.' >&2
@@ -37,6 +42,9 @@ fi
 
 # Install oh-my-zsh if it is not installed
 if [[ ! -d ~/.oh-my-zsh ]]; then
+  echo "Now you need to install oh-my-zsh."
+  echo "After installing oh-my-zsh, please run this script again. (press enter to continue)"
+  read answer
   echo "Installing oh-my-zsh..."
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
