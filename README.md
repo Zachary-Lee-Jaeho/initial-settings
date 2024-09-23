@@ -1,5 +1,6 @@
 # initial-settings for NEOVIM and TMUX
-(Nice!)
+
+> First, install zsh!
 
 # How to install 
 
