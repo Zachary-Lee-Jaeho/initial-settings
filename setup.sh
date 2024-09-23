@@ -13,7 +13,7 @@ SUDO=$(use_sudo)
 
 echo "Installing prerequisites..."
 $SUDO apt-get update
-$SUDO apt-get install -y curl wget
+$SUDO apt-get install -y curl wget nodejs npm
 
 
 # If zsh is not installed, notify and install it
@@ -128,8 +128,6 @@ if [[ -d ~/.config/nvim ]]; then
   while true; do
     read answer
     if [[ "$answer" == "yes" ]]; then
-      echo "Installing nodejs and npm..."
-      $SUDO apt install -y nodejs npm
       echo "Creating symbolic links for neovim..."
       /bin/rm -rf ~/.config/nvim
       /bin/mkdir -p ~/.config
