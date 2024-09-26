@@ -2,12 +2,21 @@
 
 # Function to check if sudo is available
 use_sudo() {
-  if sudo -n true 2>/dev/null; then
-    echo "sudo -E"
+  if [ "$(id -u)" -ne 0 ]; then
+    if grep -q docker /proc/1/cgroup 2>/dev/null; then
+      echo ""
+    else
+      if command -v sudo >/dev/null 2>&1; then
+        echo "sudo -E"
+      else
+        echo ""
+      fi
+    fi
   else
     echo ""
   fi
 }
+
 
 SUDO=$(use_sudo)
 
