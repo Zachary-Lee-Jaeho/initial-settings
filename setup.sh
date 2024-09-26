@@ -3,7 +3,7 @@
 # Function to check if sudo is available
 use_sudo() {
   if sudo -n true 2>/dev/null; then
-    echo "sudo"
+    echo "sudo -E"
   else
     echo ""
   fi
@@ -15,11 +15,7 @@ echo "Installing prerequisites..."
 $SUDO apt-get update
 $SUDO apt-get install -y curl wget build-essential git python3-venv unzip
 curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
-if sudo -n true 2>/dev/null; then
-  sudo -E zsh nodesource_setup.sh
-else
-  zsh nodesource_setup.sh
-fi
+$SUDO zsh nodesource_setup.sh
 $SUDO apt-get install -y nodejs
 
 # If zsh is not installed, notify and install it
