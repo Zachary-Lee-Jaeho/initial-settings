@@ -3,29 +3,24 @@
 # Function to check if sudo is available
 use_sudo() {
   if [ "$(id -u)" -ne 0 ]; then
-    if grep -q docker /proc/1/cgroup 2>/dev/null; then
-      echo ""
+    if command -v sudo >/dev/null 2>&1; then
+      SUDO_CMD=('sudo' '-E')
     else
-      if command -v sudo >/dev/null 2>&1; then
-        echo "sudo -E"
-      else
-        echo ""
-      fi
+      SUDO_CMD=()
     fi
   else
-    echo ""
+    SUDO_CMD=()
   fi
 }
 
-
-SUDO=$(use_sudo)
+use_sudo
 
 echo "Installing prerequisites..."
-$SUDO apt-get update
-$SUDO apt-get install -y curl wget build-essential git python3-venv unzip
+"${SUDO_CMD[@]}" apt-get update
+"${SUDO_CMD[@]}" apt-get install -y curl wget build-essential git python3-venv unzip
 curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
-$SUDO zsh nodesource_setup.sh
-$SUDO apt-get install -y nodejs
+"${SUDO_CMD[@]}" zsh nodesource_setup.sh
+"${SUDO_CMD[@]}" apt-get install -y nodejs
 
 # If zsh is not installed, notify and install it
 if ! [[ -x "$(command -v zsh)" ]]; then
@@ -73,7 +68,7 @@ if ! [[ -x "$(command -v tmux)" ]]; then
     read answer
     if [[ "$answer" == "yes" ]]; then
       echo "Installing tmux..."
-      $SUDO apt-get install -y tmux
+      "${SUDO_CMD[@]}" apt-get install -y tmux
       break
     elif [[ "$answer" == "no" ]]; then
       echo "Please run this script again after installing tmux."
@@ -129,7 +124,7 @@ if ! [[ -x "$(command -v nvim)" ]]; then
     elif [[ "$answer" == "no" ]]; then
       echo "Please run this script again after installing neovim."
       exit 1
-    else 
+    else
       echo "Please answer yes or no."
     fi
   done
