@@ -15,13 +15,13 @@ end
 
 vim.api.nvim_set_keymap("n", "<Leader>w", ":lua ToggleWrap()<CR>", { noremap = true, silent = true })
 
--- NvimTree가 마지막 남은 버퍼일 때 Neovim을 자동으로 종료
+-- If NvimTree is the last buffer, automatically close Neovim
 vim.api.nvim_create_autocmd("BufEnter", {
   group = vim.api.nvim_create_augroup("NvimTreeAutoClose", { clear = true }),
   callback = function()
-    -- 열려 있는 윈도우가 하나뿐이고, 그 윈도우가 NvimTree인지 확인
+    -- Check if there is only one window open and if that window is NvimTree
     if #vim.api.nvim_list_wins() == 1 and vim.bo.filetype == "NvimTree" then
-      -- NvimTree가 마지막 버퍼일 경우 Neovim 종료
+      -- Close Neovim if NvimTree is the last buffer
       vim.cmd "confirm quit"
     end
   end,
