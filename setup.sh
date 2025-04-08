@@ -103,6 +103,10 @@ if [[ -f ~/.tmux.conf ]]; then
       echo "Please answer yes or no."
     fi
   done
+else
+  echo "Creating symbolic links of tmux.conf ..."
+  /bin/rm -rf ~/.tmux.conf
+  /bin/ln -s ~/.local/initial-settings/tmux/tmux.conf ~/.tmux.conf
 fi
 
 # Install neovim if it is not installed
