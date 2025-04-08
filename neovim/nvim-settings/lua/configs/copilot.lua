@@ -9,7 +9,7 @@ copilot.setup {
     auto_trigger = true,
     dobounce = 50,
     keymap = {
-      accept = "<A-Tab>",
+      accept = "<A-q>",
       next = "<A-]>",
       prev = "<A-[>",
       detail = "<A-?>",
