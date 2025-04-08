@@ -8,9 +8,10 @@ local servers = {
   "biome",
   "rust_analyzer",
   "clangd",
-  "cmake",
+  "neocmake",
   "jsonls",
   "bashls",
+  "texlab",
 }
 
 for _, lsp in ipairs(servers) do
@@ -19,6 +20,15 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.texlab.setup {
+  filetypes = { "tex", "bib" },
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    client.server_capabilities.hoverProvider = true
+  end,
+  capabilities = capabilities,
+}
 
 lspconfig.clangd.setup {
   filetypes = { "c", "cpp", "objc", "objcpp", "tpp" },
