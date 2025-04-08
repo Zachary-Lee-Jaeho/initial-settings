@@ -5,7 +5,7 @@
 
 local M = {}
 
-M.ui = {
+M.base46 = {
   theme = "jellybeans",
   changed_themes = {
     jellybeans = {
