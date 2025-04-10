@@ -62,6 +62,9 @@ return {
         "ruff-lsp",
         "pyright",
         "python-lsp-server",
+
+        -- Text editing
+        "marksman",
       },
     },
   },
@@ -87,6 +90,13 @@ return {
         "css",
         "javascript",
         "json",
+
+        -- Text editing
+        "markdown",
+        "markdown_inline",
+        "regex",
+        "yaml",
+        "toml",
 
         -- Coding
         "c",

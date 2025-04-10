@@ -4,6 +4,11 @@ local copilot = require "copilot"
 vim.api.nvim_set_keymap("i", "<A-Tab>", "<Nop>", { noremap = true, silent = true })
 
 copilot.setup {
+  filetypes = {
+    markdown = true,
+    gitcommit = true,
+    text = true,
+  },
   suggestion = {
     enabled = true,
     auto_trigger = true,
