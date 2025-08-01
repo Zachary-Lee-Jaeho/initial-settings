@@ -39,7 +39,7 @@ local function open_nvim_tree(data)
       return
     end
     -- open the tree, find the file but don't focus it
-    if require("nvim-tree.view").is_visible() then
+    if require("nvim-tree.api").tree.is_visible() then
       return
     else
       require("nvim-tree.api").tree.toggle { focus = false, find_file = true }
@@ -47,10 +47,6 @@ local function open_nvim_tree(data)
 
     return
   end
-  -- change to the directory
-  vim.cmd.cd(data.file)
-  -- open the tree
-  require("nvim-tree.api").tree.open()
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
