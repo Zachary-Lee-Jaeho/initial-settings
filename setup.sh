@@ -118,11 +118,11 @@ if ! [[ -x "$(command -v nvim)" ]]; then
     if [[ "$answer" == "yes" ]]; then
       echo "Installing neovim (v0.10.1)..."
       cd neovim
-      wget https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux64.tar.gz
-      tar xzf nvim-linux64.tar.gz
-      echo "alias nvim='$HOME/.local/initial-settings/neovim/nvim-linux64/bin/nvim'" >> ~/.zshrc
+      wget https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-x86_64.tar.gz
+      tar xzf nvim-linux-x86_64.tar.gz
+      echo "alias nvim='$HOME/.local/initial-settings/neovim/nvim-linux-x86_64/bin/nvim'" >> ~/.zshrc
       echo "alias vim='nvim'" >> ~/.zshrc
-      export PATH=\$PATH:~/.local/initial-settings/neovim/nvim-linux64/bin
+      export PATH=\$PATH:~/.local/initial-settings/neovim/nvim-linux-x86_64/bin
       echo "Finished installing neovim"
       break
     elif [[ "$answer" == "no" ]]; then
